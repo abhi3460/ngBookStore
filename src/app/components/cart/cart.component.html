@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="cartArea">
+    <div class="heading cf">
+      <h1>My Cart</h1>
+    </div>
+    <p *ngIf="shoppingCart.length == 0">Your cart is empty</p>
+    <div *ngIf="shoppingCart.length > 0">
+      <button class="btn btn-primary emptyCartBtn" (click)="emptyCart()">Clear Cart</button>
+      <section id="cart">
+        <article class="product" *ngFor="let item of shoppingCart">
+          <header>
+            <a class="remove">
+              <img src="{{ item.cover }}" alt="">
+              <h3 (click)="deleteItem(item)">Remove book</h3>
+            </a>
+          </header>
+          <div class="content">
+            <h1>{{ item.title }}</h1>
+            <small *ngIf="item.description.length > 80">{{ item.description.substring(0, 180) }}...</small>
+            <small *ngIf="item.description.length <= 80">{{ item.description }}</small>
+          </div>
+          <footer class="content">
+            <span class="qt-minus" (click)="DescreseQuantity(item)">-</span>
+            <span class="qt">{{ item.quantity }}</span>
+            <span class="qt-plus" (click)="IncreseQuantity(item)">+</span>
+            <h2 class="full-price">
+                ₹ {{ (item.price * item.quantity).toFixed(2) }}
+            </h2>
+            <h2 class="price">
+              ₹ {{ item.price }}
+            </h2>
+          </footer>
+        </article>
+      </section>
+      <div id="site-footer">
+        <div class="container clearfix">
+
+          <div class="left">
+            <h2 class="subtotal">Subtotal: <span>₹ {{ total.toFixed(2) }}</span></h2>
+            <h3 class="tax">Taxes (5%): <span>₹ {{ tax.toFixed(2) }}</span></h3>
+            <h3 class="shipping">Shipping: <span>₹ 5.00</span></h3>
+          </div>
+
+          <div class="right">
+            <h1 class="total">₹ {{ subtotal.toFixed(2) }}</h1>
+            <a class="btn">Checkout</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

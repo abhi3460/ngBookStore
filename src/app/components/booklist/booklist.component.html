@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="heading cf">
+    <h1>Browse</h1>
+  </div>
+  <div class="grid-container">
+    <div class="grid-block" *ngFor="let book of bookList">
+      <img routerLink="book/{{book._id}}" style="cursor: pointer;" src="{{ book.cover }}" class="thumbnail">
+      <h4 class="title">{{ book.title }}</h4>
+      <div class="description">
+        <small *ngIf="book.description.length > 80">{{ book.description.substring(0, 80) }}...</small>
+        <small *ngIf="book.description.length <= 80">{{ book.description }}</small>
+      </div>
+      <div class="price">Buy it for
+        <strong>₹ {{ book.price }}</strong>
+      </div>
+      <div class="btn-container">
+        <button routerLink="book/{{book._id}}" class="btn btn-primary">View Book</button>
+      </div>
+    </div>
+  </div>
+</div>
