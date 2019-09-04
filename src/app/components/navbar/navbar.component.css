@@ -1,0 +1,15 @@
+img {
+  height: 70px;
+  width: 70px;
+  margin-top: -22px;
+}
+
+.nav > li {
+  font-size: 16px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}

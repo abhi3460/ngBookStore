@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="heading cf">
+    <h1>List of Books</h1>
+  </div>
+  <button class="btn btn-primary" routerLink="/manage/book/add">Add a book to list</button>
+  <br>
+  <br>
+  <table class="table table-bordered bookTable">
+    <tr id="thead">
+      <!-- <th>ID</th> -->
+      <th>Book Title</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    <tr *ngFor="let book of bookList" id="tbody">
+      <!-- <td>{{ book._id }}</td> -->
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>₹ {{ book.price }}</td>
+      <td>{{ book.category }}</td>
+      <td>
+        <Button class="btn btn-primary" title="Edit" routerLink="/manage/book/add/{{ book._id }}">&#x270E;</Button>
+      </td>
+      <td>
+        <Button class="btn btn-danger" title="Delete" (click)="deleteBook(book._id)">&#x2718;</Button>
+      </td>
+    </tr>
+  </table>
+</div>
